@@ -22,12 +22,9 @@ Add `detachhead` to the plugins section of your `.eslintrc` configuration file. 
 
 ```json
 {
-    "plugins": [
-        "detachhead"
-    ]
+    "plugins": ["detachhead"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
@@ -48,5 +45,3 @@ Then configure the rules you want to use under the rules section.
 | [require-variance-annotations](docs/rules/require-variance-annotations.md) |
 
 <!-- end auto-generated rules list -->
-
-
