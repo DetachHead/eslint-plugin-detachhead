@@ -4,7 +4,7 @@ detachhead&#39;s eslint rules
 
 ## Installation
 
-### method 1 - `@detachhead/eslint-config`
+### method 1 (recommended) - `@detachhead/eslint-config`
 
 it's recommended to use my [`@detachhead/eslint-config`](https://github.com/detachhead/eslint-config) as it includes all of the eslint plugins & rules that i recommend. this plugin only contains rules i made myself and is intended to be used along with my config
 
