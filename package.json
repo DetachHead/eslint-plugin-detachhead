@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-detachhead",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "detachhead's eslint rules",
   "keywords": [
     "eslint",
