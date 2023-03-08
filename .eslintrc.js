@@ -1,19 +1,15 @@
-"use strict";
-
-module.exports = {
-  root: true,
-  extends: [
-    "eslint:recommended",
-    "plugin:eslint-plugin/recommended",
-    "plugin:node/recommended",
-  ],
-  env: {
-    node: true,
-  },
+/** @type {import('eslint').Linter.Config} */
+const config = {
+  extends: ['@detachhead/eslint-config'],
   overrides: [
-    {
-      files: ["tests/**/*.js"],
-      env: { mocha: true },
-    },
+      {
+          files: ['src/**/*.ts'],
+          parserOptions: {
+              ecmaVersion: 'latest',
+              project: './src/tsconfig.json',
+          },
+      },
   ],
-};
+}
+
+module.exports = config

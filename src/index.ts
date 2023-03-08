@@ -1,22 +1,18 @@
-/**
- * @fileoverview detachhead&#39;s eslint rules
- * @author detachhead
- */
-"use strict";
+import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint'
+import { readdirSync } from 'fs'
+import path from 'path'
 
-//------------------------------------------------------------------------------
-// Requirements
-//------------------------------------------------------------------------------
+const rulesDir = path.join(__dirname, 'rules')
+const rules: Record<string, RuleModule<string>> = {}
 
-const requireIndex = require("requireindex");
+for (const fileName of readdirSync(rulesDir)) {
+    if (path.extname(fileName).toLocaleLowerCase() === '.js') {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires -- can't use await import here because top level
+        rules[path.parse(fileName).name] = require(path.join(
+            rulesDir,
+            fileName,
+        )) as RuleModule<string>
+    }
+}
 
-//------------------------------------------------------------------------------
-// Plugin Definition
-//------------------------------------------------------------------------------
-
-
-// import all rules in lib/rules
-module.exports.rules = requireIndex(__dirname + "/rules");
-
-
-
+export { rules }

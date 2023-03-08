@@ -1,5 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
-import {rule} from '../../src/rules/require-variance-annotations';
+import rule from '../../src/rules/require-variance-annotations';
 import path from 'path'
 
 const ruleTester = new ESLintUtils.RuleTester({

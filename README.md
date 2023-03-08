@@ -42,7 +42,11 @@ Then configure the rules you want to use under the rules section.
 ## Rules
 
 <!-- begin auto-generated rules list -->
-TODO: Run eslint-doc-generator to generate the rules list.
+
+| Name                                                                       |
+| :------------------------------------------------------------------------- |
+| [require-variance-annotations](docs/rules/require-variance-annotations.md) |
+
 <!-- end auto-generated rules list -->
 
 
