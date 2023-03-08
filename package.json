@@ -10,6 +10,10 @@
   "author": "detachhead",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "lint": "npm-run-all \"lint:*\"",
     "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
