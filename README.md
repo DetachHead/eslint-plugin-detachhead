@@ -4,7 +4,7 @@ detachhead&#39;s eslint rules
 
 ## Installation
 
-## method 1 - `@detachhead/eslint-config`
+### method 1 - `@detachhead/eslint-config`
 
 it's recommended to use my [`@detachhead/eslint-config`](https://github.com/detachhead/eslint-config) as it includes all of the eslint plugins & rules that i recommend. this plugin only contains rules i made myself and is intended to be used along with my config
 
@@ -12,7 +12,7 @@ it's recommended to use my [`@detachhead/eslint-config`](https://github.com/deta
 npm install @detachhead/eslint-config --save-dev
 ```
 
-## method 2 - just the plugin
+### method 2 - just the plugin
 
 You'll first need to install [ESLint](https://eslint.org/):
 
@@ -26,7 +26,7 @@ Next, install `eslint-plugin-detachhead`:
 npm install eslint-plugin-detachhead --save-dev
 ```
 
-### Usage
+#### Usage
 
 (this is handled by `@detachhead/eslint-config`, you only need to do this if you installed the plugin using method 2)
 
