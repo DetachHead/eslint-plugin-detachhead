@@ -47,7 +47,7 @@ export default createRule({
     }),
     meta: {
         docs: {
-            description: 'Avoid looping over enums.',
+            description: 'enforce variance annotations for all generics where they are supported.',
             recommended: 'error',
         },
         messages: {

@@ -40,8 +40,8 @@ Then configure the rules you want to use under the rules section.
 
 <!-- begin auto-generated rules list -->
 
-| Name                                                                       |
-| :------------------------------------------------------------------------- |
-| [require-variance-annotations](docs/rules/require-variance-annotations.md) |
+| Name                                                                       | Description                                                             |
+| :------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| [require-variance-annotations](docs/rules/require-variance-annotations.md) | enforce variance annotations for all generics where they are supported. |
 
 <!-- end auto-generated rules list -->
