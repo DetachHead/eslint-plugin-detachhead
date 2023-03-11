@@ -1,8 +1,7 @@
+import { createRule } from '../utils'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import * as tsutils from 'tsutils'
 import ts from 'typescript'
-
-const createRule = ESLintUtils.RuleCreator((name) => `https://example.com/rule/${name}`)
 
 export default createRule({
     create: (context) => ({
