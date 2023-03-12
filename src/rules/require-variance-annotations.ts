@@ -45,16 +45,16 @@ export default createRule({
             },
     }),
     meta: {
+        type: 'suggestion',
         docs: {
             description: 'enforce variance annotations for all generics where they are supported.',
             recommended: 'error',
         },
+        schema: [],
         messages: {
             requireVarianceAnnotation:
                 'generics must specify the variance (with `in` and/or `out` keywords)',
         },
-        type: 'suggestion',
-        schema: [],
     },
     name: 'require-variance-annotations',
     defaultOptions: [],
