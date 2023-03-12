@@ -12,6 +12,14 @@ const config = {
                 project: './src/tsconfig.json',
             },
         },
+        // TODO: remove thes when eslint-config is updated
+        {
+            files: ['*.js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off',
+                'import/no-extraneous-dependencies': 'off',
+            },
+        },
     ],
 }
 
