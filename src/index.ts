@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies -- type inpurt only & not exposed
 import { HasDefaultExport } from '@detachhead/ts-helpers/dist/types/misc'
-import { RuleModule } from '@typescript-eslint/utils/dist/ts-eslint'
+import { Linter, RuleModule } from '@typescript-eslint/utils/dist/ts-eslint'
 import { readdirSync } from 'fs'
 import path from 'path'
 
 const rulesDir = path.join(__dirname, 'rules')
-const rules: Record<string, RuleModule<string>> = {}
+export const rules: Record<string, RuleModule<string>> = {}
 
 for (const fileName of readdirSync(rulesDir)) {
     if (path.extname(fileName).toLocaleLowerCase() === '.js') {
@@ -15,4 +15,8 @@ for (const fileName of readdirSync(rulesDir)) {
     }
 }
 
-export { rules }
+export const configs: Record<string, Linter.Config> = {
+    all: {
+        rules: Object.fromEntries(Object.keys(rules).map((rule) => [rule, 'error'])),
+    },
+}
