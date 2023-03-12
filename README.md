@@ -2,7 +2,7 @@
 
 detachhead&#39;s eslint rules
 
-## Installation
+## Installation & Usage
 
 ### method 1 (recommended) - `@detachhead/eslint-config`
 
@@ -10,6 +10,14 @@ it's recommended to use my [`@detachhead/eslint-config`](https://github.com/deta
 
 ```sh
 npm install @detachhead/eslint-config --save-dev
+```
+
+then extend the config in your `.eslintrc` file:
+
+```json
+{
+    "extends": ["@detachhead/eslint-config"]
+}
 ```
 
 ### method 2 - just the plugin
@@ -26,10 +34,6 @@ Next, install `eslint-plugin-detachhead`:
 npm install eslint-plugin-detachhead --save-dev
 ```
 
-#### Usage
-
-(this is handled by `@detachhead/eslint-config`, you only need to do this if you installed the plugin using method 2)
-
 Add `detachhead` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
@@ -38,12 +42,20 @@ Add `detachhead` to the plugins section of your `.eslintrc` configuration file. 
 }
 ```
 
-Then configure the rules you want to use under the rules section.
+then enable all rules by extending the "all" config:
+
+```json
+{
+    "extends": ["detachhead/all"]
+}
+```
+
+or configure individual rules you want to use under the rules section:
 
 ```json
 {
     "rules": {
-        "detachhead/rule-name": "error"
+        "detachhead/require-variance-annotations": "error"
     }
 }
 ```
