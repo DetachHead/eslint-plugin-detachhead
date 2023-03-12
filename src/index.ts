@@ -17,6 +17,8 @@ for (const fileName of readdirSync(rulesDir)) {
 
 export const configs: Record<string, Linter.Config> = {
     all: {
-        rules: Object.fromEntries(Object.keys(rules).map((rule) => [rule, 'error'])),
+        rules: Object.fromEntries(
+            Object.keys(rules).map((rule) => [`detachhead/${rule}`, 'error']),
+        ),
     },
 }
