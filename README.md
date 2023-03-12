@@ -56,11 +56,8 @@ or configure individual rules you want to use under the rules section:
 
 <!-- begin auto-generated rules list -->
 
-💼 Configurations enabled in.\
-🌐 Set in the `all` configuration.
-
-| Name                                                                       | Description                                                             | 💼  |
-| :------------------------------------------------------------------------- | :---------------------------------------------------------------------- | :-- |
-| [require-variance-annotations](docs/rules/require-variance-annotations.md) | enforce variance annotations for all generics where they are supported. | 🌐  |
+| Name                                                                       | Description                                                             |
+| :------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| [require-variance-annotations](docs/rules/require-variance-annotations.md) | enforce variance annotations for all generics where they are supported. |
 
 <!-- end auto-generated rules list -->

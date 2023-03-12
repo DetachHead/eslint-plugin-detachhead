@@ -1,7 +1,5 @@
 # Enforce variance annotations for all generics where they are supported (`detachhead/require-variance-annotations`)
 
-💼 This rule is enabled in the 🌐 `all` config.
-
 <!-- end auto-generated rule header -->
 
 ## Rule Details
