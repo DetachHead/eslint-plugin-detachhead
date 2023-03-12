@@ -22,14 +22,6 @@ then extend the config in your `.eslintrc` file:
 
 ### method 2 - just the plugin
 
-You'll first need to install [ESLint](https://eslint.org/):
-
-```sh
-npm i eslint --save-dev
-```
-
-Next, install `eslint-plugin-detachhead`:
-
 ```sh
 npm install eslint-plugin-detachhead --save-dev
 ```
