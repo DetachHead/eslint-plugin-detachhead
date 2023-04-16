@@ -13,7 +13,7 @@ export default createRule({
                     | TSESTree.TSInterfaceDeclaration,
             ) => {
                 if (node.typeParameters === undefined) {
-                    // type aliases to functions with type parameters & interfaces with call signatures
+                    // type aliases to functions with type parameters & interfaces with call signatures with type parameters
                     return
                 }
                 const parserServices = ESLintUtils.getParserServices(context)
