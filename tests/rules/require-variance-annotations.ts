@@ -11,7 +11,20 @@ const ruleTester = new ESLintUtils.RuleTester({
 })
 
 ruleTester.run('require-variance-annotations', rule, {
-    valid: ['class Foo<in T> {value: (value: T) => void}', 'type Foo<T> = number | T'],
+    valid: [
+        'class Foo<in T> {value: (value: T) => void}',
+        'type Foo<T> = number | T',
+        'const foo: <T>() => void = () => {}',
+        'type Foo = <T>() => void',
+        'interface Foo { <T>(): void }',
+        'interface Foo { foo: <T>() => void }',
+        'declare class Foo<in T> {value: (value: T) => void}',
+        'declare type Foo<T> = number | T',
+        'declare const foo: <T>() => void',
+        'declare type Foo = <T>() => void',
+        'declare interface Foo { <T>(): void }',
+        'declare interface Foo { foo: <T>() => void }',
+    ],
     invalid: [
         {
             code: 'class Foo<T> {value: T}',
@@ -27,6 +40,22 @@ ruleTester.run('require-variance-annotations', rule, {
         },
         {
             code: 'type Foo<T> = () => {}',
+            errors: [{ messageId: 'requireVarianceAnnotation' }],
+        },
+        {
+            code: 'declare class Foo<T> {value: T}',
+            errors: [{ messageId: 'requireVarianceAnnotation' }],
+        },
+        {
+            code: 'declare type Bar<in out T> = {}; declare type Foo<T> = Bar<T>',
+            errors: [{ messageId: 'requireVarianceAnnotation' }],
+        },
+        {
+            code: 'declare type Baz<in out T> = {}; declare type Bar<in out T> = Baz<T>; declare type Foo<T> = Bar<T>',
+            errors: [{ messageId: 'requireVarianceAnnotation' }],
+        },
+        {
+            code: 'declare type Foo<T> = () => {}',
             errors: [{ messageId: 'requireVarianceAnnotation' }],
         },
     ],
