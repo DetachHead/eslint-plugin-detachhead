@@ -12,6 +12,10 @@ export default createRule({
                     | TSESTree.TSTypeAliasDeclaration
                     | TSESTree.TSInterfaceDeclaration,
             ) => {
+                if (node.typeParameters === undefined) {
+                    // type aliases to functions with type parameters & interfaces with call signatures
+                    return
+                }
                 const parserServices = ESLintUtils.getParserServices(context)
                 const checker = parserServices.program.getTypeChecker()
 
