@@ -3,43 +3,89 @@ import { as, narrow } from '@detachhead/ts-helpers/dist/functions/misc'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import ts from 'typescript'
 
+const computeSuggestionDiagnostics: (
+    sourceFile: ts.SourceFile,
+    program: ts.Program,
+    cancellationToken: ts.CancellationToken,
+) => ts.DiagnosticWithLocation[] =
+    // @ts-expect-error internal function that they tried to hide from me
+    ts.computeSuggestionDiagnostics as never
+
+const cancellationToken: ts.CancellationToken = {
+    isCancellationRequested: () => false,
+    throwIfCancellationRequested: () => undefined,
+}
+
 const getPosition = (location: ts.DiagnosticWithLocation): TSESTree.Position => ({
     line: location.file.text.substring(0, location.start).split(/\r\n|\r|\n/u).length,
     column: location.length,
 })
 
-export default createRule({
-    create: (context) => ({
+export type Options = [
+    {
+        include?: number[]
+        exclude?: number[]
+    },
+]
+
+const messageId = 'tsSuggestionMessage'
+
+export default createRule<Options, typeof messageId>({
+    create: (context, [options]) => ({
         'Program:exit': () => {
-            const diagnostics = ts.getPreEmitDiagnostics(
-                ESLintUtils.getParserServices(context).program,
-            )
-            return diagnostics.forEach((diagnostic) => {
-                if (diagnostic.category === ts.DiagnosticCategory.Suggestion) {
-                    narrow(diagnostic, as<ts.DiagnosticWithLocation>)
-                    context.report({
-                        messageId: 'tsSuggestionMessage',
-                        loc: getPosition(diagnostic),
-                        data: {
-                            message: diagnostic.messageText,
-                            code: diagnostic.code,
+            const program = ESLintUtils.getParserServices(context).program
+            const rootFiles = program.getRootFileNames()
+            program
+                .getSourceFiles()
+                .filter((file) => rootFiles.includes(file.fileName))
+                .forEach((file) =>
+                    computeSuggestionDiagnostics(file, program, cancellationToken).forEach(
+                        (diagnostic) => {
+                            if (
+                                (!options.include || options.include.includes(diagnostic.code)) &&
+                                (!options.exclude || !options.exclude.includes(diagnostic.code))
+                            ) {
+                                narrow(diagnostic, as<ts.DiagnosticWithLocation>)
+                                context.report({
+                                    messageId: 'tsSuggestionMessage',
+                                    loc: getPosition(diagnostic),
+                                    data: {
+                                        message: diagnostic.messageText,
+                                        code: diagnostic.code,
+                                    },
+                                })
+                            }
                         },
-                    })
-                }
-            })
+                    ),
+                )
         },
     }),
     meta: {
         type: 'suggestion',
         docs: {
-            description: 'disallow typescript suggestion messages',
+            description:
+                'disallow typescript suggestion messages which are usually only displayed in IDEs',
             recommended: 'error',
         },
-        schema: [],
+        schema: [
+            {
+                type: 'object',
+                properties: {
+                    include: {
+                        type: 'array',
+                        items: { type: 'number' },
+                    },
+                    exclude: {
+                        type: 'array',
+                        items: { type: 'number' },
+                    },
+                },
+            },
+        ],
         messages: {
-            tsSuggestionMessage: 'Typescript suggestion ({{ code }}): {{ message }}',
+            [messageId]: 'Typescript suggestion ({{ code }}): {{ message }}',
         },
     },
     name: 'suggestions-as-errors',
-    defaultOptions: [],
+    defaultOptions: [{}],
 })
