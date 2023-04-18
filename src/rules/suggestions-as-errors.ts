@@ -69,8 +69,8 @@ export default createRule<Options, typeof messageId>({
     meta: {
         type: 'suggestion',
         docs: {
-            description:
-                'disallow typescript suggestion messages which are usually only displayed in IDEs',
+            // eslint-disable-next-line eslint-plugin/require-meta-docs-description -- sounds better like this
+            description: 'report typescript suggestions as errors',
             recommended: 'error',
         },
         schema: [

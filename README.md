@@ -56,9 +56,9 @@ or configure individual rules you want to use under the rules section:
 
 <!-- begin auto-generated rules list -->
 
-| Name                                                                       | Description                                                                      |
-| :------------------------------------------------------------------------- | :------------------------------------------------------------------------------- |
-| [require-variance-annotations](docs/rules/require-variance-annotations.md) | enforce variance annotations for all generics where they are supported.          |
-| [suggestions-as-errors](docs/rules/suggestions-as-errors.md)               | disallow typescript suggestion messages which are usually only displayed in IDEs |
+| Name                                                                       | Description                                                             |
+| :------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| [require-variance-annotations](docs/rules/require-variance-annotations.md) | enforce variance annotations for all generics where they are supported. |
+| [suggestions-as-errors](docs/rules/suggestions-as-errors.md)               | report typescript suggestions as errors                                 |
 
 <!-- end auto-generated rules list -->

@@ -1,4 +1,4 @@
-# Disallow typescript suggestion messages which are usually only displayed in IDEs (`detachhead/suggestions-as-errors`)
+# Report typescript suggestions as errors (`detachhead/suggestions-as-errors`)
 
 <!-- end auto-generated rule header -->
 
