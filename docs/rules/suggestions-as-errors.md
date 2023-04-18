@@ -28,6 +28,21 @@ const foo = 1
 
 ## Options
 
+```js
+// .eslintrc.js
+const config = {
+    // ...
+    rules: {
+        'detachhead/suggestions-as-errors': [
+            'error',
+            {
+                exclude: [80001], // File is a CommonJS module; it may be converted to an ES module
+            },
+        ],
+    },
+}
+```
+
 ### `include`
 
 suggestion codes to include. defaults to all codes
