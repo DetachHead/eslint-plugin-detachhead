@@ -6,13 +6,14 @@ import path from 'path'
 import { throwIfUndefined } from 'throw-expression'
 import ts from 'typescript'
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- internal function that they tried to hide from me, also can't augment namespaces :(
 const computeSuggestionDiagnostics: (
     sourceFile: ts.SourceFile,
     program: ts.Program,
     cancellationToken: ts.CancellationToken,
 ) => ts.DiagnosticWithLocation[] =
-    // @ts-expect-error internal function that they tried to hide from me
-    ts.computeSuggestionDiagnostics as never
+    // @ts-expect-error see comment above
+    ts.computeSuggestionDiagnostics
 
 const cancellationToken: ts.CancellationToken = {
     isCancellationRequested: () => false,
