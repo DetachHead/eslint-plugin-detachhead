@@ -4,7 +4,9 @@
 
 ## Rule Details
 
-this rule reports suggestions like this from the typescript compiler as errors:
+this rule reports suggestions from the typescript compiler as errors.
+
+example of a typescript compiler suggestion:
 
 ![](./images/suggestions-as-errors.png)
 
