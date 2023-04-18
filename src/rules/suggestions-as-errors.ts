@@ -1,6 +1,9 @@
 import { createRule } from '../utils'
 import { as, narrow } from '@detachhead/ts-helpers/dist/functions/misc'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
+import os from 'os'
+import path from 'path'
+import { throwIfUndefined } from 'throw-expression'
 import ts from 'typescript'
 
 const computeSuggestionDiagnostics: (
@@ -21,6 +24,9 @@ const getPosition = (location: ts.DiagnosticWithLocation): TSESTree.Position => 
     column: location.length,
 })
 
+const normalizePath = (filePath: string) =>
+    path.resolve(os.platform() === 'win32' ? filePath.toLowerCase() : filePath)
+
 export type Options = [
     {
         include?: number[]
@@ -34,30 +40,29 @@ export default createRule<Options, typeof messageId>({
     create: (context, [options]) => ({
         'Program:exit': () => {
             const program = ESLintUtils.getParserServices(context).program
-            const rootFiles = program.getRootFileNames()
-            program
-                .getSourceFiles()
-                .filter((file) => rootFiles.includes(file.fileName))
-                .forEach((file) =>
-                    computeSuggestionDiagnostics(file, program, cancellationToken).forEach(
-                        (diagnostic) => {
-                            if (
-                                (!options.include || options.include.includes(diagnostic.code)) &&
-                                (!options.exclude || !options.exclude.includes(diagnostic.code))
-                            ) {
-                                narrow(diagnostic, as<ts.DiagnosticWithLocation>)
-                                context.report({
-                                    messageId: 'tsSuggestionMessage',
-                                    loc: getPosition(diagnostic),
-                                    data: {
-                                        message: diagnostic.messageText,
-                                        code: diagnostic.code,
-                                    },
-                                })
-                            }
-                        },
-                    ),
-                )
+            const fileName = normalizePath(context.getFilename())
+            const sourceFile = throwIfUndefined(
+                program.getSourceFiles().find((file) => normalizePath(file.fileName) === fileName),
+                'failed to find source file to check for suggestion diagnostics',
+            )
+            computeSuggestionDiagnostics(sourceFile, program, cancellationToken).forEach(
+                (diagnostic) => {
+                    if (
+                        (!options.include || options.include.includes(diagnostic.code)) &&
+                        (!options.exclude || !options.exclude.includes(diagnostic.code))
+                    ) {
+                        narrow(diagnostic, as<ts.DiagnosticWithLocation>)
+                        context.report({
+                            messageId: 'tsSuggestionMessage',
+                            loc: getPosition(diagnostic),
+                            data: {
+                                message: diagnostic.messageText,
+                                code: diagnostic.code,
+                            },
+                        })
+                    }
+                },
+            )
         },
     }),
     meta: {
