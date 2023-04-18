@@ -27,6 +27,7 @@
     "update:eslint-docs": "npm run build && eslint-doc-generator"
   },
   "dependencies": {
+    "@detachhead/ts-helpers": "^15.0.0",
     "@typescript-eslint/parser": "^5.53.0",
     "@typescript-eslint/utils": "^5.53.0",
     "eslint": ">=7",
@@ -35,7 +36,6 @@
   },
   "devDependencies": {
     "@detachhead/eslint-config": "0.0.24-c6a0c9947db3d868c0fb3efbba1e8ffc46169e62",
-    "@detachhead/ts-helpers": "^15.0.0",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/eslint": "^8.4.6",
     "@types/node": "^16.10.5",
