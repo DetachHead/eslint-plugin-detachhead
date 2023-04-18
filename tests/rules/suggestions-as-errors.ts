@@ -11,10 +11,42 @@ const ruleTester = new ESLintUtils.RuleTester({
 })
 
 ruleTester.run('suggestions-as-errors', rule, {
-    valid: ['console.log(1)'],
+    valid: [
+        'console.log(1)',
+        {
+            code: 'async () => await 1',
+            options: [{ exclude: [80007] }],
+        },
+        {
+            code: 'async () => await 1',
+            options: [{ include: [] }],
+        },
+        {
+            code: 'async () => await 1',
+            options: [{ include: [80007], exclude: [80007] }],
+        },
+    ],
     invalid: [
         {
-            code: 'async () => await asdf',
+            code: 'async () => await 1',
+            errors: [{ messageId: 'tsSuggestionMessage' }],
+        },
+        {
+            code: "import * as ts from 'typescript'",
+            errors: [{ messageId: 'tsSuggestionMessage' }],
+        },
+        {
+            code: "import * as ts from 'typescript';async () => await 1",
+            errors: [{ messageId: 'tsSuggestionMessage' }, { messageId: 'tsSuggestionMessage' }],
+        },
+        {
+            code: "import * as ts from 'typescript';async () => await 1",
+            options: [{ include: [80007] }],
+            errors: [{ messageId: 'tsSuggestionMessage' }],
+        },
+        {
+            code: "import * as ts from 'typescript';async () => await 1",
+            options: [{ include: [80003] }],
             errors: [{ messageId: 'tsSuggestionMessage' }],
         },
     ],
