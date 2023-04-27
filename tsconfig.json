@@ -64,7 +64,8 @@
         // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 
         /* Advanced Options */
-        // TODO: raise issues for this
+        // https://github.com/typescript-eslint/typescript-eslint/issues/6965
+        // https://github.com/ajafff/tsutils/issues/151
         "skipLibCheck": true /* Skip type checking of declaration files. */,
         "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
 
