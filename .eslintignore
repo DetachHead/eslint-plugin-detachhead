@@ -1,3 +1,5 @@
 # prevent eslint from ignoring other config files
 !.*.js
 !.*.ts
+
+tests/fixtures
