@@ -22,7 +22,7 @@
     "build": "rimraf ./dist && tsc -p src/tsconfig.json",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "test": "ts-mocha -p tsconfig.json tests/**/*.ts --timeout 10000",
+    "test": "tsc && ts-mocha -p tsconfig.json tests/**/*.ts --timeout 10000",
     "check": "npm run build && npm run lint:check && npm run lint:eslint-docs && npm run format:check && npm run test",
     "update:eslint-docs": "npm run build && eslint-doc-generator"
   },
