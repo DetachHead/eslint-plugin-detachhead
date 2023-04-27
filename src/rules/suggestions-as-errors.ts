@@ -1,5 +1,4 @@
 import { createRule } from '../utils'
-import { as, narrow } from '@detachhead/ts-helpers/dist/functions/misc'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import os from 'os'
 import path from 'path'
@@ -56,7 +55,6 @@ export default createRule<Options, typeof messageId>({
                         (!options.include || options.include.includes(diagnostic.code)) &&
                         (!options.exclude || !options.exclude.includes(diagnostic.code))
                     ) {
-                        narrow(diagnostic, as<ts.DiagnosticWithLocation>)
                         context.report({
                             messageId: 'tsSuggestionMessage',
                             loc: getPosition(diagnostic),
