@@ -76,5 +76,6 @@
         "stripInternal": false, //https://github.com/microsoft/TypeScript/issues/45307
         "resolveJsonModule": true
     },
-    "include": ["jest.config.ts", "*.*.js", "tests"]
+    "include": ["jest.config.ts", "*.*.js", "tests", "types"],
+    "exclude": ["tests/fixtures"]
 }
