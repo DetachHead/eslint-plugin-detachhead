@@ -1,7 +1,7 @@
 import { createRule } from '../utils'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import * as tsutils from 'tsutils'
-import ts from 'typescript'
+import { ObjectFlags } from 'typescript'
 
 export default createRule({
     create: (context) => ({
@@ -27,7 +27,7 @@ export default createRule({
                         : checker.getTypeFromTypeNode(originalNode.type)
                     if (
                         tsutils.isObjectType(nodeType) &&
-                        nodeType.objectFlags & (ts.ObjectFlags.Anonymous | ts.ObjectFlags.Mapped)
+                        nodeType.objectFlags & (ObjectFlags.Anonymous | ObjectFlags.Mapped)
                     ) {
                         context.report({
                             messageId: 'requireVarianceAnnotation',

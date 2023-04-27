@@ -3,23 +3,14 @@ import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import os from 'os'
 import path from 'path'
 import { throwIfUndefined } from 'throw-expression'
-import ts from 'typescript'
+import { CancellationToken, DiagnosticWithLocation, computeSuggestionDiagnostics } from 'typescript'
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- internal function that they tried to hide from me, also can't augment namespaces :(
-const computeSuggestionDiagnostics: (
-    sourceFile: ts.SourceFile,
-    program: ts.Program,
-    cancellationToken: ts.CancellationToken,
-) => ts.DiagnosticWithLocation[] =
-    // @ts-expect-error see comment above
-    ts.computeSuggestionDiagnostics
-
-const cancellationToken: ts.CancellationToken = {
+const cancellationToken: CancellationToken = {
     isCancellationRequested: () => false,
     throwIfCancellationRequested: () => undefined,
 }
 
-const getPosition = (location: ts.DiagnosticWithLocation): TSESTree.Position => {
+const getPosition = (location: DiagnosticWithLocation): TSESTree.Position => {
     const lines = location.file.text.substring(0, location.start).split(/\r\n|\r|\n/u)
     return {
         line: lines.length,
