@@ -49,5 +49,9 @@ ruleTester.run('suggestions-as-errors', rule, {
             options: [{ include: [80003] }],
             errors: [{ messageId: 'tsSuggestionMessage' }],
         },
+        {
+            code: 'console.log(1)\nasync () => await 1',
+            errors: [{ messageId: 'tsSuggestionMessage', line: 2, column: 13 }],
+        },
     ],
 })

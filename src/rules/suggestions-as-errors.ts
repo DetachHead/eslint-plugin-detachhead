@@ -20,10 +20,14 @@ const cancellationToken: ts.CancellationToken = {
     throwIfCancellationRequested: () => undefined,
 }
 
-const getPosition = (location: ts.DiagnosticWithLocation): TSESTree.Position => ({
-    line: location.file.text.substring(0, location.start).split(/\r\n|\r|\n/u).length,
-    column: location.length,
-})
+const getPosition = (location: ts.DiagnosticWithLocation): TSESTree.Position => {
+    const lines = location.file.text.substring(0, location.start).split(/\r\n|\r|\n/u)
+    return {
+        line: lines.length,
+        column: throwIfUndefined(lines.at(-1), 'failed to get position for suggestion diagnostic')
+            .length,
+    }
+}
 
 const normalizePath = (filePath: string) =>
     path.resolve(os.platform() === 'win32' ? filePath.toLowerCase() : filePath)
