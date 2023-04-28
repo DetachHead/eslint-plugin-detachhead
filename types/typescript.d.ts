@@ -1,5 +1,4 @@
-// https://github.com/microsoft/TypeScript/issues/54042
-import { CancellationToken, DiagnosticWithLocation, Program, SourceFile } from 'typescript'
+export {}
 
 declare module 'typescript' {
     export const computeSuggestionDiagnostics: (
