@@ -31,8 +31,7 @@
     "@typescript-eslint/utils": "^5.53.0",
     "eslint": ">=7",
     "throw-expression": "^1.0.2",
-    "tsutils": "^3.21.0",
-    "typescript": "^4.9.5"
+    "tsutils": "^3.21.0"
   },
   "devDependencies": {
     "@detachhead/eslint-config": "^1.2.0",
@@ -53,7 +52,8 @@
     "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
   },
   "peerDependencies": {
-    "eslint": ">=7"
+    "eslint": ">=7",
+    "typescript": ">=4"
   },
   "license": "ISC"
 }
