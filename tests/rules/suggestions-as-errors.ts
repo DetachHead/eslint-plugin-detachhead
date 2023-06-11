@@ -2,6 +2,8 @@ import rule from '../../src/rules/suggestions-as-errors'
 import { ESLintUtils } from '@typescript-eslint/utils'
 import path from 'path'
 
+const jsFile = path.resolve(__dirname, '../fixtures/jsfile.js')
+
 const ruleTester = new ESLintUtils.RuleTester({
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -13,6 +15,14 @@ const ruleTester = new ESLintUtils.RuleTester({
 ruleTester.run('suggestions-as-errors', rule, {
     valid: [
         'console.log(1)',
+        {
+            filename: jsFile,
+            code: "/** @type {import('eslint').Linter.Config} */\nconst config = {}",
+        },
+        {
+            filename: jsFile,
+            code: "/** @type {Partial<import('@trivago/prettier-plugin-sort-imports').PrettierConfig>} */\nconst config = {}",
+        },
         {
             code: 'async () => await 1',
             options: [{ exclude: [80007] }],
