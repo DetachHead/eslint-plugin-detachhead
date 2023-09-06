@@ -20,7 +20,7 @@ const getPosition = (location: DiagnosticWithLocation): TSESTree.Position => {
 }
 
 const normalizePath = (filePath: string) =>
-    path.resolve(os.platform() === 'win32' ? filePath.toLowerCase() : filePath)
+    path.resolve(os.platform() === 'linux' ? filePath : filePath.toLowerCase())
 
 export type Options = [
     {
