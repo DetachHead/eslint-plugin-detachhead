@@ -28,6 +28,45 @@ import ts from 'typescript'
 const foo = 1
 ```
 
+### troubleshooting
+
+this rule can potentially cause eslint to crash. for example:
+
+```
+Oops! Something went wrong! :(
+
+ESLint: 8.57.0
+
+TypeError: program.getImpliedNodeFormatForEmit is not a function
+Occurred while linting /project/.eslintrc.js:2
+Rule: "detachhead/suggestions-as-errors"
+```
+
+the most common cause is when your project depends on a pre-release version of typescript, because of [npm's shitty dependency resolution system](https://github.com/npm/node-semver/issues/605) which causes transient dependencies that also depend on typescript to incorrectly resolve to and install a release version of typescript as well.
+
+this results in multiple versions of the `typescript` package being installed at the same time, and that causes the `suggestions-as-errors` rule to use a different version of typescript to the version being used by `@typescript-eslint`.
+
+to work around this, add an `overrides` section to your `package.json` to force all dependencies that depend on typescript to resolve to the pre-release version you're using:
+
+```json
+{
+    "overrides": {
+        "typescript": {
+            ".": "5.5.0-dev.20240429"
+        }
+    }
+}
+```
+
+if you are not relying on on a pre-release version of typescript and are still experiencing eslint crashes caused by this rule, try the following steps:
+
+1. run `npm cache clean --force`
+2. delete `node_modules`
+3. delete `package-lock.json`
+4. run `npm install` again
+
+if the issue persists, please [raise an issue](https://github.com/DetachHead/eslint-plugin-detachhead/issues/new).
+
 ## Options
 
 ```js
