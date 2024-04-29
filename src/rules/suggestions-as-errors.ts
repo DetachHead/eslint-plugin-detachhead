@@ -40,23 +40,32 @@ export default createRule<Options, typeof messageId>({
                 program.getSourceFiles().find((file) => normalizePath(file.fileName) === fileName),
                 'failed to find source file to check for suggestion diagnostics',
             )
-            computeSuggestionDiagnostics(sourceFile, program, cancellationToken).forEach(
-                (diagnostic) => {
-                    if (
-                        (!options.include || options.include.includes(diagnostic.code)) &&
-                        (!options.exclude || !options.exclude.includes(diagnostic.code))
-                    ) {
-                        context.report({
-                            messageId: 'tsSuggestionMessage',
-                            loc: getPosition(diagnostic),
-                            data: {
-                                message: diagnostic.messageText,
-                                code: diagnostic.code,
-                            },
-                        })
-                    }
-                },
-            )
+            try {
+                computeSuggestionDiagnostics(sourceFile, program, cancellationToken).forEach(
+                    (diagnostic) => {
+                        if (
+                            (!options.include || options.include.includes(diagnostic.code)) &&
+                            (!options.exclude || !options.exclude.includes(diagnostic.code))
+                        ) {
+                            context.report({
+                                messageId: 'tsSuggestionMessage',
+                                loc: getPosition(diagnostic),
+                                data: {
+                                    message: diagnostic.messageText,
+                                    code: diagnostic.code,
+                                },
+                            })
+                        }
+                    },
+                )
+            } catch (e) {
+                throw new Error(
+                    'the following typescript crash occurred in the `detachhead/suggestions-as-errors` rule. you likely have two different versions of' +
+                        ' typescript installed due to conflicting dependencies. see the docs here for more information and potential fixes:' +
+                        ' https://github.com/DetachHead/eslint-plugin-detachhead/blob/master/docs/rules/suggestions-as-errors.md#troubleshooting\n\n' +
+                        String(e),
+                )
+            }
         },
     }),
     meta: {
