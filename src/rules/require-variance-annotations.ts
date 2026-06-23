@@ -1,4 +1,4 @@
-import { createRule } from '../utils'
+import { createRule } from '../utils.js'
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import * as tsutils from 'tsutils'
 import { ObjectFlags } from 'typescript'
@@ -52,7 +52,7 @@ export default createRule({
         type: 'suggestion',
         docs: {
             description: 'enforce variance annotations for all generics where they are supported.',
-            recommended: 'error',
+            recommended: true,
         },
         schema: [],
         messages: {

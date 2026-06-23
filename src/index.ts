@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies -- type import only, not exposed
-import { HasDefaultExport } from '@detachhead/ts-helpers/dist/types/misc'
-import { Linter, RuleModule } from '@typescript-eslint/utils/dist/ts-eslint'
+import { HasDefaultExport } from '@detachhead/ts-helpers/dist/types/misc.js'
+import { Linter, RuleModule } from '@typescript-eslint/utils/ts-eslint'
 import { readdirSync } from 'fs'
 import path from 'path'
 
@@ -15,7 +15,7 @@ for (const fileName of readdirSync(rulesDir)) {
     }
 }
 
-export const configs: Record<string, Linter.Config> = {
+export const configs: Record<string, Linter.ConfigType> = {
     all: {
         rules: Object.fromEntries(
             Object.keys(rules).map((rule) => [`detachhead/${rule}`, 'error']),
