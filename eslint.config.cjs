@@ -1,8 +1,8 @@
-import detachhead from '@detachhead/eslint-config';
-import eslintPlugin from 'eslint-plugin-eslint-plugin';
-import { defineConfig } from 'eslint/config';
+const detachhead = require('@detachhead/eslint-config').default;
+const eslintPlugin = require('eslint-plugin-eslint-plugin').default;
+const { defineConfig } = require('eslint/config');
 
-export default defineConfig([
+module.exports.default = defineConfig([
   detachhead,
   eslintPlugin.configs.all,
   {

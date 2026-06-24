@@ -1,5 +1,4 @@
-import { readFileSync } from 'fs';
-
+const { readFileSync } = require('fs');
 const { createContext } = require('@dprint/formatter');
 
 const formatter = createContext(JSON.parse(readFileSync('./dprint.json', 'utf8')));

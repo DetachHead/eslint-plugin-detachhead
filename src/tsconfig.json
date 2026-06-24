@@ -1,8 +1,9 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "noEmit": false,
-        "outDir": "../dist"
-    },
-    "include": ["**/*.ts", "../types"]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "../dist"
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
 }

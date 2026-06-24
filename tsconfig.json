@@ -77,6 +77,6 @@
     "stripInternal": false, // https://github.com/microsoft/TypeScript/issues/45307
     "resolveJsonModule": true
   },
-  "include": ["jest.config.ts", "*.*.js", "tests", "types", ".eslint-doc-generatorrc.cjs"],
-  "exclude": ["tests/fixtures"]
+  "include": ["**/*.ts", "**/*.js", "**/*.cts", "**/*.cjs"],
+  "exclude": ["tests/fixtures", "src"]
 }
