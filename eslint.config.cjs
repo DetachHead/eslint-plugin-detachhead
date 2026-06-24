@@ -2,7 +2,7 @@ const detachhead = require('@detachhead/eslint-config').default;
 const eslintPlugin = require('eslint-plugin-eslint-plugin').default;
 const { defineConfig } = require('eslint/config');
 
-module.exports.default = defineConfig([
+module.exports = defineConfig([
   detachhead,
   eslintPlugin.configs.all,
   {
