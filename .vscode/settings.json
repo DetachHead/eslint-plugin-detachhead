@@ -10,7 +10,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
-  "eslint.validate": ["typescript"],
   "git.allowForcePush": true,
   "git.autofetch": "all",
   "git.autoStash": true,

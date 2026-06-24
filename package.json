@@ -34,7 +34,7 @@
     "tsutils": "^3.21.0"
   },
   "devDependencies": {
-    "@detachhead/eslint-config": "1.5.4-d036d7c696308c919bf50f25bc0b1cb537b9ecb5",
+    "@detachhead/eslint-config": "1.5.4-5b5d4e0d1e206c4c2d3a635a4128eaa2ca571141",
     "@detachhead/ts-helpers": "^15.0.0",
     "@dprint/formatter": "^0.5.1",
     "@dprint/json": "^0.21.3",
