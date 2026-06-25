@@ -16,7 +16,7 @@ then extend the config in your `.eslintrc` file:
 
 ```json
 {
-    "extends": ["@detachhead/eslint-config"]
+  "extends": ["@detachhead/eslint-config"]
 }
 ```
 
@@ -30,7 +30,7 @@ Add `detachhead` to the plugins section of your `.eslintrc` configuration file. 
 
 ```json
 {
-    "plugins": ["detachhead"]
+  "plugins": ["detachhead"]
 }
 ```
 
@@ -38,7 +38,7 @@ then enable all rules by extending the "all" config:
 
 ```json
 {
-    "extends": ["detachhead/all"]
+  "extends": ["detachhead/all"]
 }
 ```
 
@@ -46,9 +46,9 @@ or configure individual rules you want to use under the rules section:
 
 ```json
 {
-    "rules": {
-        "detachhead/require-variance-annotations": "error"
-    }
+  "rules": {
+    "detachhead/require-variance-annotations": "error"
+  }
 }
 ```
 
