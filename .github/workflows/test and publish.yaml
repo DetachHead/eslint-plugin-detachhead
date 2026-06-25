@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
         with:
-          node-version: 16.9.1
+          node-version-file: package.json
       - run: npm ci
       - run: npm run check
       - uses: actions/upload-artifact@main
