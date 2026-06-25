@@ -3,13 +3,13 @@
     "./node_modules/@dprint/json/plugin.wasm",
     "./node_modules/@dprint/typescript/plugin.wasm",
     "./node_modules/@dprint/markdown/plugin.wasm",
-    "./node_modules/dprint-plugin-yaml/plugin.wasm",
+    "./node_modules/dprint-plugin-yaml/plugin.wasm"
   ],
   "excludes": [
-    "package-lock.json",
+    "package-lock.json"
   ],
   "typescript": {
     "quoteStyle": "preferSingle",
-    "quoteProps": "consistent",
-  },
+    "quoteProps": "consistent"
+  }
 }

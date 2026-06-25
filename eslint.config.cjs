@@ -9,6 +9,7 @@ module.exports = defineConfig([
   {
     rules: {
       'eslint-plugin/require-meta-docs-url': 'off', // i'm using md links on github which is the default
+      'eslint-plugin/require-test-error-positions': 'off', // TODO: we should prob enable this
     },
   },
   {

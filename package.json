@@ -20,8 +20,8 @@
     "lint:check": "npm run build && eslint .",
     "lint:fix": "npm run lint:check -- --fix",
     "build": "rimraf ./dist && tsc -p src/tsconfig.json",
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write .",
+    "format:check": "dprint check",
+    "format:fix": "dprint fmt",
     "test": "tsc && ts-mocha -p tsconfig.json tests/**/*.ts --timeout 10000",
     "check": "npm run lint:check && npm run lint:eslint-docs && npm run format:check && npm run test",
     "update:eslint-docs": "npm run build && eslint-doc-generator"
@@ -34,7 +34,7 @@
     "tsutils": "^3.21.0"
   },
   "devDependencies": {
-    "@detachhead/eslint-config": "1.5.4-5b5d4e0d1e206c4c2d3a635a4128eaa2ca571141",
+    "@detachhead/eslint-config": "1.5.4-a9ce34b91eaa3e325e93b6196b609179883341cc",
     "@detachhead/ts-helpers": "^15.0.0",
     "@dprint/formatter": "^0.5.1",
     "@dprint/json": "^0.21.3",
@@ -42,6 +42,7 @@
     "@dprint/typescript": "^0.96.1",
     "@types/eslint": ">=9",
     "@types/node": "^16.10.5",
+    "@typescript-eslint/rule-tester": ">=8.62.0",
     "dprint": "^0.54.0",
     "dprint-plugin-yaml": "^0.6.0",
     "eslint-doc-generator": ">=3",
