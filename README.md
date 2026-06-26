@@ -1,5 +1,17 @@
 # eslint-plugin-detachhead
 
+> [!IMPORTANT]
+> 
+> **ARCHIVED**
+> 
+> since i created this plugin, eslint completely changed how their config files work (while somehow not solving any of the problems that made eslint config such a nightmare in the first place). i gave up trying to get my plugin to work with this new system, and i now use oxlint instead.
+>
+> if you are looking for alternatives to these rules:
+> - `suggestions-as-errors` - i think all the typescript compiler suggestions i relied on this rule for are covered by existing rules:
+>   - [`typescript/no-deprecated`](https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-deprecated.html)
+>   - [`typescript/no-require-imports`](https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-require-imports.html)
+> - `require-variance-annotations` - https://github.com/oxc-project/oxc/issues/23804
+
 detachhead&#39;s eslint rules
 
 ## Installation & Usage
