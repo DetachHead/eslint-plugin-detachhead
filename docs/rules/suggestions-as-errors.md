@@ -14,18 +14,18 @@ Examples of **incorrect** code for this rule:
 
 ```ts
 // Import may be converted to a default import.
-import * as ts from 'typescript'
+import * as ts from 'typescript';
 
 // 'await' has no effect on the type of this expression.
-const foo = await 1
+const foo = await 1;
 ```
 
 Examples of **correct** code for this rule:
 
 ```ts
-import ts from 'typescript'
+import ts from 'typescript';
 
-const foo = 1
+const foo = 1;
 ```
 
 ### troubleshooting
@@ -50,11 +50,11 @@ to work around this, add an `overrides` section to your `package.json` to force 
 
 ```json
 {
-    "overrides": {
-        "typescript": {
-            ".": "5.5.0-dev.20240429"
-        }
+  "overrides": {
+    "typescript": {
+      ".": "5.5.0-dev.20240429"
     }
+  }
 }
 ```
 
@@ -72,16 +72,16 @@ if the issue persists, please [raise an issue](https://github.com/DetachHead/esl
 ```js
 // .eslintrc.js
 const config = {
-    // ...
-    rules: {
-        'detachhead/suggestions-as-errors': [
-            'error',
-            {
-                exclude: [80001], // File is a CommonJS module; it may be converted to an ES module
-            },
-        ],
-    },
-}
+  // ...
+  rules: {
+    'detachhead/suggestions-as-errors': [
+      'error',
+      {
+        exclude: [80001], // File is a CommonJS module; it may be converted to an ES module
+      },
+    ],
+  },
+};
 ```
 
 ### `include`

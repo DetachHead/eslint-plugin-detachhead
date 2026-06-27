@@ -1,26 +1,37 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "editor.formatOnSave": true,
-    "prettier.configPath": ".prettierrc.js",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "always"
-    },
-    "eslint.validate": ["typescript"],
-    "git.allowForcePush": true,
-    "git.autofetch": "all",
-    "git.autoStash": true,
-    "git.pruneOnFetch": true,
-    "git.rebaseWhenSync": true,
-    "git.suggestSmartCommit": false,
-    "git.supportCancellation": true,
-    "git.useCommitInputAsStashMessage": true,
-    "git.pullBeforeCheckout": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "files.eol": "\n",
-    "typescript.enablePromptUseWorkspaceTsdk": true,
-    "git.useEditorAsCommitInput": false,
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json": ".github/workflows/*.yaml"
-    }
+  "chat.disableAIFeatures": true,
+  "telemetry.feedback.enabled": false,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "editor.formatOnSave": true,
+  "[javascript][typescript][json][jsonc][yaml][github-actions-workflow][markdown]": {
+    "editor.defaultFormatter": "dprint.dprint"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "git.allowForcePush": true,
+  "git.autofetch": "all",
+  "git.autoStash": true,
+  "git.pruneOnFetch": true,
+  "git.rebaseWhenSync": true,
+  "git.suggestSmartCommit": false,
+  "git.supportCancellation": true,
+  "git.useCommitInputAsStashMessage": true,
+  "git.pullBeforeCheckout": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.eol": "\n",
+  "git.useEditorAsCommitInput": false,
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json": ".github/workflows/*.yaml"
+  },
+  "terminal.integrated.env.windows": {
+    "PATH": "${workspaceFolder}/node_modules/.bin;${env:PATH}"
+  },
+  "terminal.integrated.env.osx": {
+    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+  },
+  "terminal.integrated.env.linux": {
+    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+  }
 }

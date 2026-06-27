@@ -1,0 +1,24 @@
+const detachhead = require('@detachhead/eslint-config').default;
+const eslintPlugin = require('eslint-plugin-eslint-plugin').default;
+const { defineConfig } = require('eslint/config');
+
+module.exports = defineConfig([
+  { ignores: ['tests/fixtures'] },
+  detachhead,
+  eslintPlugin.configs.all,
+  {
+    rules: {
+      'eslint-plugin/require-meta-docs-url': 'off', // i'm using md links on github which is the default
+      'eslint-plugin/require-test-error-positions': 'off', // TODO: we should prob enable this
+    },
+  },
+  {
+    files: ['src/**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest',
+        project: './src/tsconfig.json',
+      },
+    },
+  },
+]);
